@@ -1,0 +1,55 @@
+# Maven build output
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDE & Editor files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets & Local database configuration
+src/main/resources/db.properties
+database/db.properties
+*.log
+
+# Java / Maven
+target/
+*.class
+
+# IDE files
+.idea/
+.vscode/
+
+# Local secrets
+src/main/resources/db.properties
+
+
+# Maven build output
+target/
+
+# Embedded Tomcat generated files
+tomcat.8080/
+
+# Local database credentials
+src/main/resources/db.properties
+
+# IDE files
+.idea/
+.vscode/
+.tomcat.8080/

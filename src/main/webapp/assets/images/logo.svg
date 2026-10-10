@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&amp;display=swap');
+            .brand-text {
+                font-family: 'Outfit', -apple-system, sans-serif;
+                font-weight: 900;
+                font-size: 38px;
+                fill: #342014;
+                letter-spacing: -0.5px;
+            }
+            .brand-accent {
+                fill: #7E5B44;
+            }
+        </style>
+    </defs>
+    <!-- Briefcase icon badge -->
+    <rect x="6" y="12" width="36" height="34" rx="8" fill="#7E5B44" />
+    <path d="M16 12 V8 A4 4 0 0 1 24 8 V12" fill="none" stroke="#FAF5EF" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M6 24 H42" stroke="#FAF5EF" stroke-width="2" stroke-opacity="0.4" />
+    <circle cx="24" cy="24" r="3" fill="#FAF5EF" />
+    <!-- Brand Name -->
+    <text x="52" y="39" class="brand-text">JOB<tspan class="brand-accent">IFY</tspan></text>
+</svg>
