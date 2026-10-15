@@ -6,26 +6,28 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h3>JOBIFY</h3>
+                <a href="${pageContext.request.contextPath}/home" class="brand-logo" style="font-size: 34px;">
+                    JOBIFY
+                </a>
                 <p>
-                    A modern, warm, and intuitive web-based online job portal connecting ambitious talent with visionary companies.
+                    A modern, warm, and intuitive job platform connecting ambitious talent with visionary companies across high-growth industries.
                 </p>
             </div>
 
             <div class="footer-col">
                 <h4>For Job Seekers</h4>
                 <ul class="footer-links">
-                    <li><a href="${pageContext.request.contextPath}/jobs">Explore Jobs</a></li>
+                    <li><a href="${pageContext.request.contextPath}/jobs">Explore All Jobs</a></li>
                     <li><a href="${pageContext.request.contextPath}/companies">Featured Companies</a></li>
                     <li><a href="${pageContext.request.contextPath}/register?role=JOB_SEEKER">Create Seeker Profile</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login">Seeker Sign In</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login">Candidate Sign In</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>For Employers</h4>
                 <ul class="footer-links">
-                    <li><a href="${pageContext.request.contextPath}/register?role=EMPLOYER">Register Company</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register?role=EMPLOYER">Register Organization</a></li>
                     <li><a href="${pageContext.request.contextPath}/login">Employer Sign In</a></li>
                     <li><a href="${pageContext.request.contextPath}/employer/jobs/create">Post a Job Opening</a></li>
                     <li><a href="${pageContext.request.contextPath}/employer/applications">Manage Applicants</a></li>
@@ -33,19 +35,19 @@
             </div>
 
             <div class="footer-col">
-                <h4>College Viva Demo</h4>
+                <h4>Platform &amp; Growth</h4>
                 <ul class="footer-links">
-                    <li><a href="${pageContext.request.contextPath}/login">Admin Login (admin@jobify.com)</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login">Employer Login (techcorp@jobify.com)</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login">Seeker Login (alice@jobify.com)</a></li>
-                    <li><a href="${pageContext.request.contextPath}/home#architecture">MVC & Schema Overview</a></li>
+                    <li><a href="${pageContext.request.contextPath}/jobs?jobType=Remote">Remote Opportunities</a></li>
+                    <li><a href="${pageContext.request.contextPath}/jobs?jobType=Internship">Internship Programs</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home#how-it-works">How Jobify Works</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home#industries">Trending Industries</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Jobify Portal. College Project: Jakarta EE, Servlets, JSP, JDBC, MySQL.</p>
-            <p>Designed with Cozy Warm Cream, Beige &amp; Cocoa Brown Aesthetics.</p>
+            <p>&copy; 2026 Jobify Inc. All rights reserved.</p>
+            <p>Designed Diva Codez.</p>
         </div>
     </div>
 </footer>

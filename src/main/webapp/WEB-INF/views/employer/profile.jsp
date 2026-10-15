@@ -11,7 +11,7 @@
                 ${not empty profile.companyName ? profile.companyName.substring(0, 1).toUpperCase() : 'E'}
             </div>
             <div class="sidebar-name"><c:out value="${not empty profile.companyName ? profile.companyName : currentUser.displayName}" /></div>
-            <div class="sidebar-role">Verified Employer</div>
+            <div class="sidebar-role">Verified Organization</div>
         </div>
 
         <ul class="sidebar-menu">
@@ -118,7 +118,7 @@
                                id="industry" 
                                name="industry" 
                                class="form-control" 
-                               placeholder="e.g. Software & Cloud Services" 
+                               placeholder="e.g. Software &amp; Cloud Services" 
                                value="<c:out value='${profile.industry}'/>">
                     </div>
 

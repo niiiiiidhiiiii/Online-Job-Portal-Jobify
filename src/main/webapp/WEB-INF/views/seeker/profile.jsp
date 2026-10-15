@@ -17,7 +17,7 @@
         <ul class="sidebar-menu">
             <li>
                 <a href="${pageContext.request.contextPath}/seeker/dashboard" class="sidebar-menu-link">
-                    &#128202; Dashboard
+                    &#128202; Dashboard Overview
                 </a>
             </li>
             <li>
@@ -48,7 +48,7 @@
         <div class="section-header">
             <div>
                 <h1 class="section-title">My Candidate Profile</h1>
-                <p class="section-subtitle">Keep your skills and resume up-to-date for employers and recommendation matches</p>
+                <p class="section-subtitle">Keep your skills and resume details current for employers and smart match recommendations</p>
             </div>
         </div>
 
@@ -84,7 +84,7 @@
                                id="headline" 
                                name="headline" 
                                class="form-control" 
-                               placeholder="e.g. Full-Stack Java Developer | Spring Boot & MySQL" 
+                               placeholder="e.g. Full-Stack Developer | Java, MySQL & React" 
                                value="<c:out value='${profile.headline}'/>">
                     </div>
 
@@ -101,7 +101,7 @@
 
                 <!-- Skills for Matching Engine -->
                 <div class="form-group">
-                    <label for="skills" class="form-label">Skills &amp; Technologies (Used for AI Job Matching) *</label>
+                    <label for="skills" class="form-label">Skills &amp; Technologies (Used for Job Recommendations) *</label>
                     <input type="text" 
                            id="skills" 
                            name="skills" 
@@ -109,7 +109,7 @@
                            placeholder="Java, Spring Boot, MySQL, Jakarta Servlets, HTML, CSS, JavaScript, Git" 
                            value="<c:out value='${profile.skills}'/>" 
                            required>
-                    <div class="form-hint">Separate individual skills with commas. Our recommendation engine uses these to match you with top jobs!</div>
+                    <div class="form-hint">Separate individual skills with commas. Our recommendation engine uses these to match you with top jobs.</div>
                 </div>
 
                 <div class="form-group">
@@ -128,7 +128,7 @@
                               name="education" 
                               class="form-control" 
                               rows="2" 
-                              placeholder="e.g. B.Tech Computer Science, University Name (2022 - 2026)"><c:out value="${profile.education}"/></textarea>
+                              placeholder="e.g. B.S. in Computer Science, University Name (2021 - 2025)"><c:out value="${profile.education}"/></textarea>
                 </div>
 
                 <div class="form-group">
@@ -137,7 +137,7 @@
                               name="experience" 
                               class="form-control" 
                               rows="3" 
-                              placeholder="e.g. Software Engineer Intern at XYZ Solutions (6 months). Built REST APIs and database layers."><c:out value="${profile.experience}"/></textarea>
+                              placeholder="e.g. Software Engineer at Company (2 years). Built REST APIs and scalable database layers."><c:out value="${profile.experience}"/></textarea>
                 </div>
 
                 <!-- Resume URL and Resume Highlights -->

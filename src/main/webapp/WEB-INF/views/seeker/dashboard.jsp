@@ -17,7 +17,7 @@
         <ul class="sidebar-menu">
             <li>
                 <a href="${pageContext.request.contextPath}/seeker/dashboard" class="sidebar-menu-link active">
-                    &#128202; Dashboard
+                    &#128202; Dashboard Overview
                 </a>
             </li>
             <li>
@@ -47,8 +47,8 @@
     <main class="dashboard-content">
         <div class="section-header">
             <div>
-                <h1 class="section-title">Seeker Dashboard</h1>
-                <p class="section-subtitle">Track your application pipeline and discover matching roles</p>
+                <h1 class="section-title">Candidate Dashboard</h1>
+                <p class="section-subtitle">Track your application pipeline and discover skill-matched roles</p>
             </div>
             <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary btn-sm">Find New Jobs &rarr;</a>
         </div>
@@ -68,7 +68,7 @@
                     <h4>In Review</h4>
                     <div class="stat-number">${stats.seekerPendingApplications}</div>
                 </div>
-                <div class="stat-icon" style="color: #D97706;">&#9200;</div>
+                <div class="stat-icon" style="color: var(--color-mid-brown);">&#9200;</div>
             </div>
 
             <div class="stat-card">
@@ -76,7 +76,7 @@
                     <h4>Shortlisted</h4>
                     <div class="stat-number">${stats.seekerShortlistedApplications}</div>
                 </div>
-                <div class="stat-icon" style="color: #0D9488;">&#9733;</div>
+                <div class="stat-icon" style="color: #25634D;">&#9733;</div>
             </div>
 
             <div class="stat-card">
@@ -84,19 +84,19 @@
                     <h4>Offers Accepted</h4>
                     <div class="stat-number">${stats.seekerAcceptedApplications}</div>
                 </div>
-                <div class="stat-icon" style="color: #166534;">&#127881;</div>
+                <div class="stat-icon" style="color: #1E6B35;">&#127881;</div>
             </div>
         </div>
 
         <!-- Skill-Based Recommendations Widget -->
-        <div style="margin-bottom: 2.5rem;">
-            <div class="section-header" style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 2.75rem;">
+            <div class="section-header" style="margin-bottom: 1.25rem;">
                 <div>
-                    <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-espresso); font-weight: 700;">
+                    <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-dark-brown); font-weight: 700;">
                         Recommended for Your Skills
                     </h2>
-                    <p style="font-size: 0.88rem; color: var(--color-text-muted);">
-                        Calculated by analyzing your profile skills: 
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+                        Calculated by analyzing your registered competencies: 
                         <strong><c:out value="${not empty profile.skills ? profile.skills : 'No skills set yet'}"/></strong>
                     </p>
                 </div>
@@ -107,10 +107,10 @@
 
             <c:choose>
                 <c:when test="${not empty recommendations}">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
                         <c:forEach var="rec" items="${recommendations}">
-                            <div class="job-card" style="padding: 1.25rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                            <div class="job-card" style="padding: 1.35rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 0.5rem;">
                                     <h4 style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700;">
                                         <a href="${pageContext.request.contextPath}/job-details?id=${rec.id}">
                                             <c:out value="${rec.title}" />
@@ -122,7 +122,7 @@
                                     <c:out value="${rec.companyName}" /> &bull; <c:out value="${rec.location}" />
                                 </div>
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--color-border-subtle);">
-                                    <span style="font-weight: 700; font-size: 0.92rem;">${rec.formattedSalary}</span>
+                                    <span style="font-weight: 700; font-size: 0.94rem; color: var(--color-dark-brown);">${rec.formattedSalary}</span>
                                     <a href="${pageContext.request.contextPath}/job-details?id=${rec.id}" class="btn btn-secondary btn-sm">
                                         View &rarr;
                                     </a>
@@ -132,9 +132,9 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="empty-state" style="padding: 2rem 1rem;">
-                        <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
-                            Add your skills (e.g. Java, MySQL, React) to your profile to get automated matching recommendations!
+                    <div class="empty-state" style="padding: 2.25rem 1.5rem;">
+                        <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+                            Add your skills (e.g. Java, MySQL, React, Design) to your profile to get automated matching recommendations!
                         </p>
                         <a href="${pageContext.request.contextPath}/seeker/profile" class="btn btn-primary btn-sm">
                             Update Skills Profile
@@ -146,12 +146,12 @@
 
         <!-- Recent Applications Table -->
         <div>
-            <div class="section-header" style="margin-bottom: 1rem;">
-                <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-espresso); font-weight: 700;">
+            <div class="section-header" style="margin-bottom: 1.25rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-dark-brown); font-weight: 700;">
                     Recent Applications
                 </h2>
                 <a href="${pageContext.request.contextPath}/seeker/applications" class="btn btn-secondary btn-sm">
-                    View All History
+                    View Full History
                 </a>
             </div>
 
@@ -171,7 +171,7 @@
                             <tbody>
                                 <c:forEach var="app" items="${recentApplications}">
                                     <tr>
-                                        <td style="font-weight: 600;">
+                                        <td style="font-weight: 700;">
                                             <a href="${pageContext.request.contextPath}/job-details?id=${app.jobId}">
                                                 <c:out value="${app.jobTitle}" />
                                             </a>
@@ -183,7 +183,7 @@
                                         </td>
                                         <td>
                                             <a href="${pageContext.request.contextPath}/job-details?id=${app.jobId}" class="btn btn-outline btn-sm">
-                                                Job Info
+                                                View Role
                                             </a>
                                         </td>
                                     </tr>
@@ -193,11 +193,11 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="empty-state" style="padding: 2.5rem 1rem;">
+                    <div class="empty-state" style="padding: 2.75rem 1.5rem;">
                         <div class="empty-state-icon">&#128221;</div>
                         <h3 class="empty-state-title">No applications submitted yet</h3>
-                        <p class="empty-state-text">Explore open job listings and submit your first application today!</p>
-                        <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary btn-sm">Browse Jobs Now</a>
+                        <p class="empty-state-text">Explore active job listings and submit your first application today!</p>
+                        <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary btn-sm">Browse Openings</a>
                     </div>
                 </c:otherwise>
             </c:choose>

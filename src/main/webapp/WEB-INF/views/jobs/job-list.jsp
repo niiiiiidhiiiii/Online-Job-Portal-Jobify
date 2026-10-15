@@ -3,12 +3,12 @@
 <c:set var="pageTitle" value="Explore Jobs - Jobify" />
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-<main class="container" style="padding: 3rem 1.5rem 5rem;">
-    <!-- Page Title -->
+<main class="container" style="padding: 3.5rem 1.75rem 5.5rem;">
+    <!-- Page Header -->
     <div class="section-header">
         <div>
             <h1 class="section-title">Explore Job Opportunities</h1>
-            <p class="section-subtitle">Showing ${totalJobs} open positions across top categories</p>
+            <p class="section-subtitle">Showing ${totalJobs} open positions curated from verified companies</p>
         </div>
         <c:if test="${not empty currentUser and currentUser.employer}">
             <a href="${pageContext.request.contextPath}/employer/jobs/create" class="btn btn-primary btn-sm">
@@ -20,25 +20,25 @@
     <!-- Search & Filter Toolbar -->
     <form action="${pageContext.request.contextPath}/jobs" method="GET" class="filter-bar" id="job-filter-form">
         <div>
-            <label class="form-label" style="font-size: 0.8rem;">Keyword</label>
+            <label class="form-label" style="font-size: 0.82rem;">Keyword</label>
             <input type="text" 
                    name="keyword" 
                    class="form-control" 
-                   placeholder="Title, skill, or keyword" 
+                   placeholder="Job title, skill, or keyword" 
                    value="<c:out value='${keyword}'/>">
         </div>
 
         <div>
-            <label class="form-label" style="font-size: 0.8rem;">Location</label>
+            <label class="form-label" style="font-size: 0.82rem;">Location</label>
             <input type="text" 
                    name="location" 
                    class="form-control" 
-                   placeholder="City, State, or Remote" 
+                   placeholder="City, state, or Remote" 
                    value="<c:out value='${location}'/>">
         </div>
 
         <div>
-            <label class="form-label" style="font-size: 0.8rem;">Category</label>
+            <label class="form-label" style="font-size: 0.82rem;">Category</label>
             <select name="category" class="form-control">
                 <option value="ALL">All Categories</option>
                 <c:forEach var="cat" items="${categories}">
@@ -48,7 +48,7 @@
         </div>
 
         <div>
-            <label class="form-label" style="font-size: 0.8rem;">Job Type</label>
+            <label class="form-label" style="font-size: 0.82rem;">Job Type</label>
             <select name="jobType" class="form-control">
                 <option value="ALL">All Job Types</option>
                 <option value="Full-Time" ${jobType == 'Full-Time' ? 'selected' : ''}>Full-Time</option>
@@ -60,19 +60,19 @@
         </div>
 
         <div>
-            <label class="form-label" style="font-size: 0.8rem;">Min Salary ($)</label>
+            <label class="form-label" style="font-size: 0.82rem;">Min Salary ($)</label>
             <input type="number" 
                    name="minSalary" 
                    class="form-control" 
-                   placeholder="e.g. 50000" 
+                   placeholder="e.g. 60000" 
                    value="<c:out value='${minSalary}'/>">
         </div>
 
         <div style="display: flex; gap: 0.5rem; align-self: flex-end;">
             <button type="submit" class="btn btn-primary" id="btn-apply-filters">
-                Filter
+                Filter Results
             </button>
-            <a href="${pageContext.request.contextPath}/jobs" class="btn btn-secondary" title="Clear filters">
+            <a href="${pageContext.request.contextPath}/jobs" class="btn btn-secondary" title="Reset all filters">
                 Clear
             </a>
         </div>
@@ -146,7 +146,7 @@
                 <div class="empty-state-icon">&#128269;</div>
                 <h3 class="empty-state-title">No jobs match your search</h3>
                 <p class="empty-state-text">
-                    Try adjusting your search criteria, clearing salary or location filters to see more results.
+                    Try adjusting your search keywords, broadening salary expectations, or selecting all categories to view more opportunities.
                 </p>
                 <a href="${pageContext.request.contextPath}/jobs" class="btn btn-secondary">
                     Clear All Filters

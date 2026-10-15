@@ -30,15 +30,36 @@ public final class DBConfig {
     }
 
     private static void loadProperties() {
-        try (InputStream input = DBConfig.class.getClassLoader().getResourceAsStream("db.properties")) {
-            if (input != null) {
-                PROPERTIES.load(input);
-                LOGGER.info("Successfully loaded database configuration from db.properties");
-            } else {
-                LOGGER.warning("db.properties not found on classpath. Falling back to environment variables or defaults.");
+        InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties");
+        if (input == null) {
+            input = DBConfig.class.getClassLoader().getResourceAsStream("db.properties");
+        }
+        if (input == null) {
+            java.io.File file = new java.io.File("src/main/resources/db.properties");
+            if (file.exists()) {
+                try {
+                    input = new java.io.FileInputStream(file);
+                } catch (java.io.FileNotFoundException ignored) {}
             }
-        } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Error reading db.properties file: " + e.getMessage(), e);
+        }
+        if (input == null) {
+            java.io.File file = new java.io.File("target/classes/db.properties");
+            if (file.exists()) {
+                try {
+                    input = new java.io.FileInputStream(file);
+                } catch (java.io.FileNotFoundException ignored) {}
+            }
+        }
+
+        if (input != null) {
+            try (InputStream stream = input) {
+                PROPERTIES.load(stream);
+                LOGGER.info("Successfully loaded database configuration from db.properties");
+            } catch (IOException e) {
+                LOGGER.log(Level.WARNING, "Error reading db.properties file: " + e.getMessage(), e);
+            }
+        } else {
+            LOGGER.warning("db.properties not found on classpath or filesystem. Falling back to environment variables or defaults.");
         }
     }
 

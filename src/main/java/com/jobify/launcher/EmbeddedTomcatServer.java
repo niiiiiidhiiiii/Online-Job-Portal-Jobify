@@ -54,6 +54,10 @@ public class EmbeddedTomcatServer {
         Context ctx = tomcat.addWebapp("", webappDir.getAbsolutePath());
         ctx.setParentClassLoader(EmbeddedTomcatServer.class.getClassLoader());
 
+        // Also mount at /jobify to support http://localhost:8080/jobify/...
+        Context ctxJobify = tomcat.addWebapp("/jobify", webappDir.getAbsolutePath());
+        ctxJobify.setParentClassLoader(EmbeddedTomcatServer.class.getClassLoader());
+
         // Attach compiled classes (target/classes) to the WebAppClassLoader resource root
         File additionWebInfClasses = new File("target/classes");
         if (additionWebInfClasses.exists()) {
@@ -65,11 +69,21 @@ public class EmbeddedTomcatServer {
                     "/"
             ));
             ctx.setResources(resources);
+
+            StandardRoot resourcesJobify = new StandardRoot(ctxJobify);
+            resourcesJobify.addPreResources(new DirResourceSet(
+                    resourcesJobify,
+                    "/WEB-INF/classes",
+                    additionWebInfClasses.getAbsolutePath(),
+                    "/"
+            ));
+            ctxJobify.setResources(resourcesJobify);
         }
 
         LOGGER.info("=================================================================");
-        LOGGER.info(" Starting CozyHire / Jobify Portal on Embedded Apache Tomcat 10.1");
-        LOGGER.info(" URL: http://localhost:" + port + "/");
+        LOGGER.info(" Starting Jobify Portal on Embedded Apache Tomcat 10.1");
+        LOGGER.info(" Root URL:    http://localhost:" + port + "/");
+        LOGGER.info(" Context URL: http://localhost:" + port + "/jobify/");
         LOGGER.info(" WebApp Directory: " + webappDir.getAbsolutePath());
         LOGGER.info(" Base Directory:   " + baseDir);
         LOGGER.info("=================================================================");

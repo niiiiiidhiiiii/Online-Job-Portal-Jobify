@@ -3,21 +3,23 @@
 <c:set var="pageTitle" value="${company.companyName} - Jobify" />
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-<main class="container" style="padding: 3.5rem 1.5rem 5rem;">
+<main class="container" style="padding: 3.5rem 1.75rem 6rem;">
     <!-- Company Profile Header Card -->
-    <div class="form-card" style="margin-bottom: 2.5rem;">
+    <div class="form-card" style="margin-bottom: 3rem;">
         <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-            <div class="job-company-avatar" style="width: 72px; height: 72px; font-size: 1.8rem; border-radius: 18px;">
+            <div class="job-company-avatar" style="width: 76px; height: 76px; font-size: 2rem; border-radius: 20px;">
                 ${company.companyName.substring(0, 1).toUpperCase()}
             </div>
-            <div style="flex: 1;">
-                <h1 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--color-espresso);">
+            <div style="flex: 1; min-width: 240px;">
+                <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-dark-brown); line-height: 1.2;">
                     <c:out value="${company.companyName}" />
                 </h1>
-                <div style="font-size: 1rem; color: var(--color-text-muted); margin-top: 0.25rem;">
-                    &#128188; <c:out value="${not empty company.industry ? company.industry : 'General Industry'}" /> &bull; 
-                    &#128205; <c:out value="${not empty company.location ? company.location : 'Remote'}" /> &bull; 
-                    &#128101; <c:out value="${not empty company.companySize ? company.companySize : '10-50'} team members" />
+                <div style="font-size: 1rem; color: var(--color-text-muted); margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <span>&#128188; <c:out value="${not empty company.industry ? company.industry : 'General Industry'}" /></span>
+                    <span>&bull;</span>
+                    <span>&#128205; <c:out value="${not empty company.location ? company.location : 'Remote'}" /></span>
+                    <span>&bull;</span>
+                    <span>&#128101; <c:out value="${not empty company.companySize ? company.companySize : '10-50'} team members" /></span>
                 </div>
             </div>
 
@@ -29,7 +31,7 @@
         </div>
 
         <c:if test="${not empty company.description}">
-            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); font-size: 0.95rem; line-height: 1.7; color: var(--color-text-main);">
+            <div style="margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border); font-size: 0.98rem; line-height: 1.75; color: var(--color-text-main);">
                 <p><c:out value="${company.description}" /></p>
             </div>
         </c:if>
@@ -39,7 +41,7 @@
     <div class="section-header">
         <div>
             <h2 class="section-title">Open Positions at <c:out value="${company.companyName}"/></h2>
-            <p class="section-subtitle">Join their team and advance your career</p>
+            <p class="section-subtitle">Join their team and advance your career journey</p>
         </div>
     </div>
 
@@ -89,7 +91,7 @@
             <div class="empty-state">
                 <div class="empty-state-icon">&#128269;</div>
                 <h3 class="empty-state-title">No current openings</h3>
-                <p class="empty-state-text">This company currently has no active listings. Check back later!</p>
+                <p class="empty-state-text">This company currently has no active listings. Check back later or browse other partner companies!</p>
                 <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary">Browse All Jobs</a>
             </div>
         </c:otherwise>

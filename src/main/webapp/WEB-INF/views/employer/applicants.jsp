@@ -11,7 +11,7 @@
                 ${not empty currentUser.displayName ? currentUser.displayName.substring(0, 1).toUpperCase() : 'E'}
             </div>
             <div class="sidebar-name"><c:out value="${currentUser.displayName}" /></div>
-            <div class="sidebar-role">Verified Employer</div>
+            <div class="sidebar-role">Verified Organization</div>
         </div>
 
         <ul class="sidebar-menu">
@@ -52,11 +52,11 @@
             </div>
         </div>
 
-        <!-- Filter by Specific Job -->
-        <div class="filter-bar" style="grid-template-columns: 1fr auto; margin-bottom: 1.5rem;">
+        <!-- Filter by Specific Job Opening -->
+        <div class="filter-bar" style="grid-template-columns: 1fr auto; margin-bottom: 2rem;">
             <form action="${pageContext.request.contextPath}/employer/applications" method="GET" style="display: flex; gap: 1rem; align-items: center; width: 100%;">
                 <div style="flex: 1;">
-                    <label class="form-label" style="font-size: 0.8rem;">Filter by Opening</label>
+                    <label class="form-label" style="font-size: 0.82rem;">Filter by Opening</label>
                     <select name="jobId" class="form-control" onchange="this.form.submit()">
                         <option value="">All Job Openings (${stats.employerTotalApplications} Total Candidates)</option>
                         <c:forEach var="mj" items="${myJobs}">
@@ -82,22 +82,22 @@
                             <tr>
                                 <th>Candidate Name</th>
                                 <th>Position</th>
-                                <th>Skills &amp; Headline</th>
+                                <th>Headline &amp; Skills</th>
                                 <th>Applied Date</th>
                                 <th>Status</th>
-                                <th>Evaluation Action</th>
+                                <th>Evaluation</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="app" items="${applicants}">
                                 <tr>
                                     <td>
-                                        <div style="font-weight: 700; color: var(--color-espresso);">
+                                        <div style="font-weight: 700; color: var(--color-dark-brown);">
                                             <c:out value="${not empty app.seekerName ? app.seekerName : app.seekerEmail}" />
                                         </div>
-                                        <div style="font-size: 0.8rem; color: var(--color-text-muted);"><c:out value="${app.seekerEmail}" /></div>
+                                        <div style="font-size: 0.82rem; color: var(--color-text-muted);"><c:out value="${app.seekerEmail}" /></div>
                                         <c:if test="${not empty app.seekerPhone}">
-                                            <div style="font-size: 0.78rem; color: var(--color-text-light);">&#128222; <c:out value="${app.seekerPhone}" /></div>
+                                            <div style="font-size: 0.8rem; color: var(--color-text-light);">&#128222; <c:out value="${app.seekerPhone}" /></div>
                                         </c:if>
                                     </td>
                                     <td>
@@ -106,11 +106,11 @@
                                     </td>
                                     <td style="max-width: 260px;">
                                         <c:if test="${not empty app.seekerHeadline}">
-                                            <div style="font-size: 0.85rem; font-weight: 600; color: var(--color-espresso); margin-bottom: 0.25rem;">
+                                            <div style="font-size: 0.86rem; font-weight: 600; color: var(--color-dark-brown); margin-bottom: 0.25rem;">
                                                 <c:out value="${app.seekerHeadline}" />
                                             </div>
                                         </c:if>
-                                        <div style="font-size: 0.8rem; color: var(--color-text-muted);">
+                                        <div style="font-size: 0.82rem; color: var(--color-text-muted);">
                                             <c:out value="${not empty app.seekerSkills ? app.seekerSkills : 'No skills specified'}" />
                                         </div>
                                     </td>
@@ -148,7 +148,7 @@
         <div class="modal-header">
             <div>
                 <h3 class="modal-title" id="evalCandidateName">Candidate Evaluation</h3>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);" id="evalJobTitle"></div>
+                <div style="font-size: 0.86rem; color: var(--color-text-muted);" id="evalJobTitle"></div>
             </div>
             <button type="button" class="modal-close-btn" onclick="closeModal('evaluateModal')">&times;</button>
         </div>
@@ -158,30 +158,30 @@
 
             <div class="modal-body">
                 <!-- Cover Letter -->
-                <div style="margin-bottom: 1.25rem;">
-                    <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.35rem;">
+                <div style="margin-bottom: 1.4rem;">
+                    <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.4rem; letter-spacing: 0.5px;">
                         Candidate Cover Letter
                     </div>
-                    <div id="evalCoverLetter" style="background-color: var(--color-cream); padding: 0.9rem; border-radius: 8px; font-size: 0.9rem; white-space: pre-line; line-height: 1.6; max-height: 160px; overflow-y: auto;"></div>
+                    <div id="evalCoverLetter" style="background-color: var(--color-card-bg-warm); padding: 1rem; border-radius: 10px; font-size: 0.92rem; white-space: pre-line; line-height: 1.6; max-height: 160px; overflow-y: auto; border: 1px solid var(--color-border-subtle);"></div>
                 </div>
 
                 <!-- Resume Summary -->
-                <div style="margin-bottom: 1.25rem;">
-                    <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.35rem;">
+                <div style="margin-bottom: 1.4rem;">
+                    <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.4rem; letter-spacing: 0.5px;">
                         Resume / Experience Summary
                     </div>
-                    <div id="evalResumeSummary" style="background-color: var(--color-cream-light); border: 1px solid var(--color-border); padding: 0.9rem; border-radius: 8px; font-size: 0.9rem; white-space: pre-line; line-height: 1.6; max-height: 140px; overflow-y: auto;"></div>
+                    <div id="evalResumeSummary" style="background-color: #FFFFFF; border: 1.5px solid var(--color-border); padding: 1rem; border-radius: 10px; font-size: 0.92rem; white-space: pre-line; line-height: 1.6; max-height: 140px; overflow-y: auto;"></div>
                 </div>
 
                 <!-- Online Resume Link if available -->
-                <div id="evalResumeUrlWrapper" style="margin-bottom: 1.25rem; display: none;">
+                <div id="evalResumeUrlWrapper" style="margin-bottom: 1.4rem; display: none;">
                     <a id="evalResumeUrl" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
                         Open Candidate Online Portfolio / Resume &#8599;
                     </a>
                 </div>
 
                 <!-- Update Status & Notes -->
-                <div class="form-group" style="padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                <div class="form-group" style="padding-top: 1.25rem; border-top: 1px solid var(--color-border);">
                     <label for="evalStatus" class="form-label">Update Application Stage *</label>
                     <select id="evalStatus" name="status" class="form-control" required>
                         <option value="PENDING">Pending Review</option>

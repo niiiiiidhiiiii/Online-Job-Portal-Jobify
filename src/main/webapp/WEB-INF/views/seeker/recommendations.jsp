@@ -17,7 +17,7 @@
         <ul class="sidebar-menu">
             <li>
                 <a href="${pageContext.request.contextPath}/seeker/dashboard" class="sidebar-menu-link">
-                    &#128202; Dashboard
+                    &#128202; Dashboard Overview
                 </a>
             </li>
             <li>
@@ -47,9 +47,9 @@
     <main class="dashboard-content">
         <div class="section-header">
             <div>
-                <h1 class="section-title">AI Skill-Matched Opportunities</h1>
+                <h1 class="section-title">Skill-Matched Opportunities</h1>
                 <p class="section-subtitle">
-                    Automated recommendations calculated by comparing your registered skills against current market demands
+                    Automated recommendations calculated by comparing your profile competencies against open role requirements
                 </p>
             </div>
             <a href="${pageContext.request.contextPath}/seeker/profile" class="btn btn-outline btn-sm">
@@ -58,22 +58,22 @@
         </div>
 
         <!-- Seeker Skill Badges Banner -->
-        <div style="background-color: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: 14px; padding: 1.25rem; margin-bottom: 2rem;">
-            <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.5rem;">
-                Your Current Matched Skills
+        <div style="background-color: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2.25rem; box-shadow: var(--shadow-subtle);">
+            <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.65rem; letter-spacing: 0.5px;">
+                Your Registered Skills Profile
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                 <c:choose>
                     <c:when test="${not empty profile.skillList}">
                         <c:forEach var="skill" items="${profile.skillList}">
-                            <span class="skill-tag" style="background-color: var(--color-cream); color: var(--color-cocoa-dark); padding: 0.35rem 0.75rem; font-size: 0.85rem; border: 1px solid var(--color-border-subtle);">
+                            <span class="skill-tag" style="background-color: var(--color-sand); color: var(--color-dark-brown); padding: 0.35rem 0.85rem; font-size: 0.88rem; border: none; font-weight: 600;">
                                 &#10004; <c:out value="${skill}" />
                             </span>
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <span style="font-size: 0.88rem; color: var(--color-text-muted); font-style: italic;">
-                            No skills configured yet. Please update your profile to generate recommendations.
+                        <span style="font-size: 0.9rem; color: var(--color-text-muted); font-style: italic;">
+                            No skills configured yet. Please update your profile to generate custom recommendations.
                         </span>
                     </c:otherwise>
                 </c:choose>
@@ -99,9 +99,7 @@
                                         </h3>
                                         <div class="job-company"><c:out value="${job.companyName}" /></div>
                                     </div>
-                                    <span class="badge badge-match" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">
-                                        ${job.matchScore}% Match
-                                    </span>
+                                    <span class="badge badge-match">${job.matchScore}% Match</span>
                                 </div>
 
                                 <div class="job-meta-pills">
@@ -112,9 +110,6 @@
 
                                 <p class="job-desc-snippet"><c:out value="${job.description}" /></p>
 
-                                <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted); margin-bottom: 0.4rem;">
-                                    Required by Employer:
-                                </div>
                                 <div class="job-skills-list">
                                     <c:forEach var="skill" items="${job.skillList}">
                                         <span class="skill-tag"><c:out value="${skill}" /></span>
@@ -124,8 +119,8 @@
 
                             <div class="job-card-footer">
                                 <span class="job-salary">${job.formattedSalary}</span>
-                                <a href="${pageContext.request.contextPath}/job-details?id=${job.id}" class="btn btn-primary btn-sm">
-                                    View &amp; Apply &rarr;
+                                <a href="${pageContext.request.contextPath}/job-details?id=${job.id}" class="btn btn-secondary btn-sm">
+                                    View Details &rarr;
                                 </a>
                             </div>
                         </div>
@@ -135,12 +130,12 @@
             <c:otherwise>
                 <div class="empty-state">
                     <div class="empty-state-icon">&#128161;</div>
-                    <h3 class="empty-state-title">No matching jobs found yet</h3>
+                    <h3 class="empty-state-title">No recommendations yet</h3>
                     <p class="empty-state-text">
-                        Try adding more skills to your profile (e.g. Java, MySQL, React, CSS) to broaden your recommendation pool.
+                        Add common industry skills (like Java, SQL, React, or Python) to your profile to begin matching with open jobs!
                     </p>
                     <a href="${pageContext.request.contextPath}/seeker/profile" class="btn btn-primary">
-                        Update Candidate Skills
+                        Configure Skills Profile
                     </a>
                 </div>
             </c:otherwise>

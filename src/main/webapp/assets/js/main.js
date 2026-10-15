@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 6000);
     });
 
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('nav-mobile-toggle');
+    const navLinks = document.getElementById('nav-links-menu');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+            navLinks.classList.toggle('mobile-open');
+        });
+    }
+
     // 2. Modal Helper Functions
     window.openModal = function (modalId) {
         const modal = document.getElementById(modalId);

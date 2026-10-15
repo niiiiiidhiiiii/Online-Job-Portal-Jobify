@@ -11,7 +11,7 @@
                 ${not empty currentUser.displayName ? currentUser.displayName.substring(0, 1).toUpperCase() : 'E'}
             </div>
             <div class="sidebar-name"><c:out value="${currentUser.displayName}" /></div>
-            <div class="sidebar-role">Verified Employer</div>
+            <div class="sidebar-role">Verified Organization</div>
         </div>
 
         <ul class="sidebar-menu">
@@ -159,7 +159,7 @@
                            placeholder="Java, MySQL, Jakarta Servlets, Spring Boot, REST API" 
                            value="<c:out value='${job.skillsRequired}'/>" 
                            required>
-                    <div class="form-hint">These skills are used to compute candidate match scores on Jobify.</div>
+                    <div class="form-hint">These skills are used to calculate candidate compatibility matches on Jobify.</div>
                 </div>
 
                 <div class="form-group">
@@ -184,7 +184,7 @@
 
                 <div class="form-group">
                     <label for="status" class="form-label">Listing Status</label>
-                    <select id="status" name="status" class="form-control" style="max-width: 200px;">
+                    <select id="status" name="status" class="form-control" style="max-width: 260px;">
                         <option value="ACTIVE" ${job.status == 'ACTIVE' ? 'selected' : ''}>Active (Accepting Applications)</option>
                         <option value="CLOSED" ${job.status == 'CLOSED' ? 'selected' : ''}>Closed / Archived</option>
                     </select>
@@ -195,7 +195,7 @@
                         Cancel
                     </a>
                     <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-job">
-                        ${isEdit ? 'Update Job Listing' : 'Publish Job Listing'} &rarr;
+                        ${isEdit ? 'Update Job Listing' : 'Publish Job Opening'} &rarr;
                     </button>
                 </div>
             </form>

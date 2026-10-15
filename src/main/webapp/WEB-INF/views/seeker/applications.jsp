@@ -17,7 +17,7 @@
         <ul class="sidebar-menu">
             <li>
                 <a href="${pageContext.request.contextPath}/seeker/dashboard" class="sidebar-menu-link">
-                    &#128202; Dashboard
+                    &#128202; Dashboard Overview
                 </a>
             </li>
             <li>
@@ -48,10 +48,10 @@
         <div class="section-header">
             <div>
                 <h1 class="section-title">Application Status Tracker</h1>
-                <p class="section-subtitle">Real-time status updates and feedback from hiring teams</p>
+                <p class="section-subtitle">Real-time status updates and hiring team feedback on your submissions</p>
             </div>
             <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary btn-sm">
-                Apply to More Jobs
+                Apply to More Jobs &rarr;
             </a>
         </div>
 
@@ -66,14 +66,14 @@
                                 <th>Location &amp; Type</th>
                                 <th>Applied Date</th>
                                 <th>Status</th>
-                                <th>Employer Notes / Feedback</th>
+                                <th>Employer Feedback / Notes</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="app" items="${applications}">
                                 <tr>
-                                    <td style="font-weight: 700; color: var(--color-espresso);">
+                                    <td style="font-weight: 700; color: var(--color-dark-brown);">
                                         <a href="${pageContext.request.contextPath}/job-details?id=${app.jobId}">
                                             <c:out value="${app.jobTitle}" />
                                         </a>
@@ -91,13 +91,13 @@
                                     <td style="max-width: 250px;">
                                         <c:choose>
                                             <c:when test="${not empty app.employerNotes}">
-                                                <div style="font-size: 0.85rem; background-color: var(--color-cream); padding: 0.4rem 0.6rem; border-radius: 6px; border-left: 3px solid var(--color-cocoa);">
+                                                <div style="font-size: 0.85rem; background-color: var(--color-card-bg-warm); padding: 0.45rem 0.75rem; border-radius: 8px; border-left: 3px solid var(--color-mid-brown);">
                                                     <c:out value="${app.employerNotes}" />
                                                 </div>
                                             </c:when>
                                             <c:otherwise>
                                                 <span style="font-size: 0.82rem; color: var(--color-text-light); font-style: italic;">
-                                                    Awaiting review
+                                                    Under initial review
                                                 </span>
                                             </c:otherwise>
                                         </c:choose>
@@ -116,9 +116,9 @@
             <c:otherwise>
                 <div class="empty-state">
                     <div class="empty-state-icon">&#128221;</div>
-                    <h3 class="empty-state-title">No applications found</h3>
-                    <p class="empty-state-text">You haven't submitted any applications yet. Explore openings and apply today!</p>
-                    <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary">Find Your Next Job</a>
+                    <h3 class="empty-state-title">No applications recorded</h3>
+                    <p class="empty-state-text">Explore active openings from partner companies and submit an application!</p>
+                    <a href="${pageContext.request.contextPath}/jobs" class="btn btn-primary">Find Jobs Now</a>
                 </div>
             </c:otherwise>
         </c:choose>

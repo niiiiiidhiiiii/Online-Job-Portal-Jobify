@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${not empty pageTitle ? pageTitle : 'Jobify - Web-Based Online Job Portal'}</title>
+    <title>${not empty pageTitle ? pageTitle : 'Jobify - Snatch Your Dream Job'}</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 </head>
 <body>
@@ -19,16 +19,25 @@
 <!-- Main Navigation Bar -->
 <header class="navbar">
     <div class="container nav-container">
-        <!-- Brand Logo (matching mockup) -->
+        <!-- Brand Logo (44px, Quirky font, Tilted -5deg) -->
         <a href="${pageContext.request.contextPath}/home" class="brand-logo" id="nav-brand-logo">
             JOBIFY
         </a>
 
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle Navigation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
         <!-- Center Navigation Links -->
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links-menu">
             <li>
                 <a href="${pageContext.request.contextPath}/home" 
-                   class="nav-link ${pageContext.request.requestURI.endsWith('/home') or pageContext.request.requestURI.endsWith('/index.jsp') ? 'active' : ''}"
+                   class="nav-link ${pageContext.request.requestURI.endsWith('/home') or pageContext.request.requestURI.endsWith('/index.jsp') or pageContext.request.requestURI.endsWith('/') ? 'active' : ''}"
                    id="nav-link-home">Home</a>
             </li>
             <li>
@@ -72,7 +81,7 @@
                     </a>
                 </c:when>
                 <c:otherwise>
-                    <!-- Exact wording from user's design image: "Sign in / Employers" -->
+                    <!-- Exact matching design: "Sign in / Employers" -->
                     <a href="${pageContext.request.contextPath}/login" class="nav-auth-link" id="nav-login-link">
                         Sign in
                     </a>

@@ -11,7 +11,7 @@
                 ${not empty currentUser.displayName ? currentUser.displayName.substring(0, 1).toUpperCase() : 'E'}
             </div>
             <div class="sidebar-name"><c:out value="${currentUser.displayName}" /></div>
-            <div class="sidebar-role">Verified Employer</div>
+            <div class="sidebar-role">Verified Organization</div>
         </div>
 
         <ul class="sidebar-menu">
@@ -64,7 +64,7 @@
                                 <th>Job Title</th>
                                 <th>Category &amp; Type</th>
                                 <th>Applicants</th>
-                                <th>Approval</th>
+                                <th>Moderation</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -73,12 +73,12 @@
                             <c:forEach var="j" items="${jobs}">
                                 <tr>
                                     <td>
-                                        <div style="font-weight: 700; color: var(--color-espresso);">
+                                        <div style="font-weight: 700; color: var(--color-dark-brown);">
                                             <a href="${pageContext.request.contextPath}/job-details?id=${j.id}">
                                                 <c:out value="${j.title}" />
                                             </a>
                                         </div>
-                                        <div style="font-size: 0.8rem; color: var(--color-text-muted);">
+                                        <div style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 0.2rem;">
                                             &#128205; <c:out value="${j.location}" /> &bull; ${j.formattedSalary}
                                         </div>
                                     </td>
@@ -146,7 +146,7 @@
                 <div class="empty-state">
                     <div class="empty-state-icon">&#128188;</div>
                     <h3 class="empty-state-title">No jobs created yet</h3>
-                    <p class="empty-state-text">Start attracting candidates by posting your first job opening.</p>
+                    <p class="empty-state-text">Start attracting candidates by posting your first job opening on Jobify.</p>
                     <a href="${pageContext.request.contextPath}/employer/jobs/create" class="btn btn-primary">Post a Job Opening</a>
                 </div>
             </c:otherwise>

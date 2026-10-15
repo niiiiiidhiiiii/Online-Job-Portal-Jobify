@@ -7,7 +7,7 @@
     <!-- Sidebar Navigation -->
     <aside class="dashboard-sidebar">
         <div class="sidebar-profile">
-            <div class="sidebar-avatar" style="background-color: var(--color-espresso); color: #FFFFFF;">
+            <div class="sidebar-avatar">
                 A
             </div>
             <div class="sidebar-name"><c:out value="${currentUser.displayName}" /></div>
@@ -43,9 +43,9 @@
         <div class="section-header">
             <div>
                 <h1 class="section-title">Administrator Console</h1>
-                <p class="section-subtitle">Comprehensive portal health, user controls, and listing moderation</p>
+                <p class="section-subtitle">Portal health, account moderation, and job verification overview</p>
             </div>
-            <span class="badge badge-accepted" style="font-size: 0.85rem;">
+            <span class="badge badge-accepted" style="font-size: 0.85rem; padding: 0.4rem 0.9rem;">
                 &#9679; System Online
             </span>
         </div>
@@ -57,7 +57,7 @@
                     <h4>Total Users</h4>
                     <div class="stat-number">${stats.totalUsers}</div>
                 </div>
-                <div class="stat-icon">&#128101;</div>
+                <div class="stat-icon" style="color: var(--color-mid-brown);">&#128101;</div>
             </div>
 
             <div class="stat-card">
@@ -65,7 +65,7 @@
                     <h4>Job Seekers</h4>
                     <div class="stat-number">${stats.totalJobSeekers}</div>
                 </div>
-                <div class="stat-icon" style="color: #2563EB;">&#128188;</div>
+                <div class="stat-icon" style="color: var(--color-primary-brown);">&#128188;</div>
             </div>
 
             <div class="stat-card">
@@ -73,7 +73,7 @@
                     <h4>Employers</h4>
                     <div class="stat-number">${stats.totalEmployers}</div>
                 </div>
-                <div class="stat-icon" style="color: #D97706;">&#127970;</div>
+                <div class="stat-icon" style="color: var(--color-dusty-rose);">&#127970;</div>
             </div>
 
             <div class="stat-card">
@@ -81,15 +81,15 @@
                     <h4>Active Jobs</h4>
                     <div class="stat-number">${stats.activeJobs}</div>
                 </div>
-                <div class="stat-icon" style="color: #166534;">&#128994;</div>
+                <div class="stat-icon" style="color: #2E7D32;">&#128994;</div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-card-info">
-                    <h4>Pending Approval</h4>
-                    <div class="stat-number" style="color: #DC2626;">${stats.pendingApprovalJobs}</div>
+                    <h4>Pending Review</h4>
+                    <div class="stat-number" style="color: var(--color-dusty-rose);">${stats.pendingApprovalJobs}</div>
                 </div>
-                <div class="stat-icon" style="color: #DC2626;">&#9888;</div>
+                <div class="stat-icon" style="color: var(--color-dusty-rose);">&#9888;</div>
             </div>
 
             <div class="stat-card">
@@ -97,19 +97,19 @@
                     <h4>Applications</h4>
                     <div class="stat-number">${stats.totalApplications}</div>
                 </div>
-                <div class="stat-icon">&#128221;</div>
+                <div class="stat-icon" style="color: var(--color-dark-brown);">&#128221;</div>
             </div>
         </div>
 
         <!-- Pending Approval Queue -->
-        <div style="margin-bottom: 2.5rem;">
-            <div class="section-header" style="margin-bottom: 1rem;">
+        <div class="form-card" style="padding: 1.75rem; border-radius: 16px; margin-bottom: 2.25rem;">
+            <div class="section-header" style="margin-bottom: 1.25rem;">
                 <div>
-                    <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-espresso); font-weight: 700;">
-                        Job Approval Moderation Queue
+                    <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-dark-brown); font-weight: 700;">
+                        Job Moderation Queue
                     </h2>
                     <p style="font-size: 0.88rem; color: var(--color-text-muted);">
-                        Review newly posted jobs submitted by employers
+                        Review employer job submissions awaiting public release
                     </p>
                 </div>
                 <a href="${pageContext.request.contextPath}/admin/jobs" class="btn btn-secondary btn-sm">
@@ -134,7 +134,7 @@
                                 <c:forEach var="pj" items="${pendingJobs}">
                                     <tr>
                                         <td>
-                                            <div style="font-weight: 700; color: var(--color-espresso);"><c:out value="${pj.title}" /></div>
+                                            <div style="font-weight: 700; color: var(--color-dark-brown);"><c:out value="${pj.title}" /></div>
                                             <div style="font-size: 0.8rem; color: var(--color-text-muted);">${pj.formattedSalary}</div>
                                         </td>
                                         <td><c:out value="${pj.companyName}" /></td>
@@ -145,7 +145,7 @@
                                                 <form action="${pageContext.request.contextPath}/admin/jobs/approve" method="POST" style="display: inline;">
                                                     <input type="hidden" name="jobId" value="${pj.id}">
                                                     <input type="hidden" name="approvalStatus" value="APPROVED">
-                                                    <button type="submit" class="btn btn-primary btn-sm" style="background-color: #166534;">
+                                                    <button type="submit" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32; padding: 0.35rem 0.85rem;">
                                                         &#10004; Approve
                                                     </button>
                                                 </form>
@@ -153,7 +153,7 @@
                                                 <form action="${pageContext.request.contextPath}/admin/jobs/approve" method="POST" style="display: inline;">
                                                     <input type="hidden" name="jobId" value="${pj.id}">
                                                     <input type="hidden" name="approvalStatus" value="REJECTED">
-                                                    <button type="submit" class="btn btn-secondary btn-sm" style="color: #991B1B;">
+                                                    <button type="submit" class="btn btn-secondary btn-sm" style="color: #991B1B; padding: 0.35rem 0.85rem;">
                                                         &#10006; Reject
                                                     </button>
                                                 </form>
@@ -166,11 +166,11 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="empty-state" style="padding: 2rem 1rem;">
-                        <div style="font-size: 1.5rem; color: #166534; margin-bottom: 0.5rem;">&#10004;</div>
-                        <h4 style="font-weight: 700; color: var(--color-espresso);">Approval Queue Clear</h4>
+                    <div class="empty-state" style="padding: 2.25rem 1rem;">
+                        <div style="font-size: 1.8rem; color: #2E7D32; margin-bottom: 0.5rem;">&#10004;</div>
+                        <h4 style="font-weight: 700; color: var(--color-dark-brown);">Approval Queue Clear</h4>
                         <p style="font-size: 0.88rem; color: var(--color-text-muted);">
-                            All employer job postings are currently reviewed and approved.
+                            All employer job postings have been reviewed and approved.
                         </p>
                     </div>
                 </c:otherwise>
@@ -178,9 +178,9 @@
         </div>
 
         <!-- Recent Audit Log Entries -->
-        <div>
-            <div class="section-header" style="margin-bottom: 1rem;">
-                <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-espresso); font-weight: 700;">
+        <div class="form-card" style="padding: 1.75rem; border-radius: 16px;">
+            <div class="section-header" style="margin-bottom: 1.25rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-dark-brown); font-weight: 700;">
                     System Audit Activity Log
                 </h2>
             </div>
@@ -202,14 +202,14 @@
                                     ${log.createdAt.toString().substring(0, 19)}
                                 </td>
                                 <td>
-                                    <span class="meta-pill" style="font-family: monospace; font-size: 0.75rem;">
+                                    <span class="meta-pill" style="font-family: monospace; font-size: 0.75rem; background-color: var(--color-sand); color: var(--color-dark-brown);">
                                         <c:out value="${log.action}" />
                                     </span>
                                 </td>
                                 <td>
                                     <c:out value="${not empty log.userEmail ? log.userEmail : 'SYSTEM'}" />
                                 </td>
-                                <td style="font-size: 0.88rem;">
+                                <td style="font-size: 0.88rem; color: var(--color-text-dark);">
                                     <c:out value="${log.details}" />
                                 </td>
                             </tr>
