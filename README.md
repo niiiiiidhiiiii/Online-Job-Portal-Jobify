@@ -1,4 +1,4 @@
-# CozyHire / Jobify: Web-Based Online Job Portal
+# Jobify: Web-Based Online Job Portal
 
 > **College Full-Stack Java Project**  
 > Built from absolute scratch with **Jakarta EE 10, Jakarta Servlets, JSP & JSTL, JDBC, MySQL / MariaDB, Apache Tomcat 10.1, and JUnit 5**.  
